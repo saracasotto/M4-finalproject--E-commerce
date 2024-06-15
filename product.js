@@ -1,7 +1,7 @@
 const apiUrl = 'https://striveschool-api.herokuapp.com/api/product/';
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY4OGIxZDhmYzBmMzAwMTU1ZTViNTYiLCJpYXQiOjE3MTgxMzM1NTcsImV4cCI6MTcxOTM0MzE1N30.OkUzPN5awKorvvbomefJBC0UThVDSweOe6IygWMrez0';
 
-//Funzione asincrona per ottenere i dettagli di un singolo prodotto
+//Async function to fetch details of a single product
 async function getProduct(id) {
     try {
         const response = await fetch(`${apiUrl}${id}`, {
@@ -20,7 +20,7 @@ async function getProduct(id) {
     }
 }
 
-//Funzione per display prodotto
+//Function for product display
 function displayProduct(product) {
     document.getElementById('product-name').textContent = product.name;
     document.getElementById('product-image').src = product.imageUrl;
@@ -31,7 +31,7 @@ function displayProduct(product) {
     document.getElementById('product-id').textContent = product._id;
 }
 
-//Funzione per ottenere l'ID del prodotto dall'URL
+//Function to obtain the ID from the URL
 function getProductIdFromUrl() {
     const params = new URLSearchParams(window.location.search);
     return params.get('id');
@@ -47,7 +47,7 @@ function hideLoadingOverlay() {
     }, 500); // mezzo secondo
 }
 
-// Funzione per aggiungere prodotto al carrello
+//Function to add the product to cart
 function addToCart(product) {
     const cartItems = document.getElementById('cart-items');
     const cartItem = document.createElement('div');

@@ -1,9 +1,9 @@
 const apiUrl = 'https://striveschool-api.herokuapp.com/api/product/';
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY4OGIxZDhmYzBmMzAwMTU1ZTViNTYiLCJpYXQiOjE3MTgxMzM1NTcsImV4cCI6MTcxOTM0MzE1N30.OkUzPN5awKorvvbomefJBC0UThVDSweOe6IygWMrez0';
 
-let allProducts = []; // Variabile per memorizzare tutti i prodotti
+let allProducts = []; // Variable to store all the products
 
-// Funzione asincrona per ottenere tutti i prodotti dal backoffice
+// Asynchronous function to fetch all products from the back office
 async function getProducts() {
     try {
         let response = await fetch(apiUrl, {
@@ -14,15 +14,15 @@ async function getProducts() {
             }
         });
         let products = await response.json();
-        allProducts = products; // Salva i prodotti nella variabile allProducts
-        console.log('Products received:', products); // Console log dei prodotti recuperati
+        allProducts = products;
+        console.log('Products received:', products); 
         return products;
     } catch (error) {
         console.error('Error:', error); // Log errore 
     }
 }
 
-// Funzione per mostrare tutti i prodotti dal backoffice
+// Function to display all products from the back office
 function displayProducts(products) {
     const productList = document.getElementById('product-list');
     if (!productList) return; // Se l'elemento product-list non esiste, esci dalla funzione
@@ -49,16 +49,16 @@ function displayProducts(products) {
     });
 }
 
-// Funzione per filtrare i prodotti in base alla ricerca
+// Function to filter products based on search
 function filterProducts(searchTerm) {
-    const filteredProducts = allProducts.filter(product => 
+    const filteredProducts = allProducts.filter(product =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     displayProducts(filteredProducts);
 }
 
 window.onload = () => {
-    if (document.getElementById('product-list')) { // Controllo esistenza elemento HTML
+    if (document.getElementById('product-list')) { //check HTML existing element
         getProducts().then(products => {
             displayProducts(products);
         });

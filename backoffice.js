@@ -2,7 +2,7 @@
 const apiUrl = 'https://striveschool-api.herokuapp.com/api/product/';
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY4OGIxZDhmYzBmMzAwMTU1ZTViNTYiLCJpYXQiOjE3MTgxMzM1NTcsImV4cCI6MTcxOTM0MzE1N30.OkUzPN5awKorvvbomefJBC0UThVDSweOe6IygWMrez0';
 
-//Funzione asincrona per ottenere tutti i prodotti
+//Async function to fetch all products
 async function getProducts() {
     try {
         let response = await fetch(apiUrl, {
@@ -20,7 +20,7 @@ async function getProducts() {
     }
 }
 
-//Funzione per mostrare i prodotti esistenti nel backoffice
+//Function to display existing products in the back office
 function displayExistingProducts(products) {
     const existingProductsList = document.getElementById('existing-products');
     if (!existingProductsList) return;
@@ -72,7 +72,7 @@ function displayExistingProducts(products) {
 }
 
 
-//Funzione asincrona per aggiungere prodotto con metodo POST
+//Async function to add a product using the POST method
 async function addProduct(event) {
     event.preventDefault();
 
@@ -143,17 +143,17 @@ window.onload = () => {
         });
     }
 
-    // Aggiungi event listener per il click sui bottoni di delete
+    //Add event listener for click on delete buttons
     document.addEventListener('click', async (event) => {
         if (event.target.classList.contains('delete')) {
             const card = event.target.closest('.card');
             const productId = card.dataset.productId;
 
-            // Mostra il modal di conferma
+            //Show confirmation modal
             const confirmDeleteModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'), {});
             confirmDeleteModal.show();
 
-            // Gestione del click sul pulsante "Elimina" nel modal
+            
             const confirmDeleteButton = document.getElementById('confirmDeleteButton');
             confirmDeleteButton.addEventListener('click', async () => {
                 try {
@@ -166,24 +166,20 @@ window.onload = () => {
                     });
 
                     if (response.ok) {
-                        // Nascondi il modal di conferma
                         confirmDeleteModal.hide();
 
-                        // Mostra l'alert di conferma
+                        //Show confirmation alert
                         const alertSuccess = document.getElementById('alert-success');
                         alertSuccess.classList.remove('d-none');
                         alertSuccess.classList.add('show');
 
-                        // Nascondi l'alert dopo 2 secondi
+                        //Hide after 2 secs
                         setTimeout(() => {
                             alertSuccess.classList.remove('show');
                             alertSuccess.classList.add('d-none');
                         }, 2000);
 
-                        // Rimuovi visivamente la card
                         card.remove();
-
-                        // Aggiorna la pagina
                         location.reload();
                     } else {
                         console.error('Errore durante la cancellazione del prodotto:', response.statusText);
@@ -196,7 +192,7 @@ window.onload = () => {
     });
 
 
-    // Aggiungi event listener per il click sui bottoni di modifica
+    //Add event listener for click on edit buttons
     document.addEventListener('click', async (event) => {
         if (event.target.classList.contains('edit-product-btn')) {
             const card = event.target.closest('.card');
@@ -206,7 +202,6 @@ window.onload = () => {
             const productPrice = parseFloat(card.querySelector('.card-text:last-of-type').textContent.replace('€', ''));
             const productImageUrl = card.querySelector('.card-img-top').src;
 
-            // Popola il form di modifica con le informazioni del prodotto corrente
             document.getElementById('edit-imageUrl').value = productImageUrl;
             document.getElementById('edit-name').value = productName;
             document.getElementById('edit-description').value = productDescription;
@@ -214,14 +209,10 @@ window.onload = () => {
             document.getElementById('edit-price').value = productPrice;
 
 
-            // Mostra il modale di modifica
+            //Show edit modal
             const editProductModal = new bootstrap.Modal(document.getElementById('editProductModal'), {});
             editProductModal.show();
         
-
-
-            // Gestione del click sul pulsante "Modifica" nel modale di modifica
-            // Aggiungi un event listener al pulsante di conferma modifica
             const confirmEditButton = document.getElementById('confirmEditButton');
             confirmEditButton.addEventListener('click', async () => {
                 const updatedProduct = {
@@ -246,22 +237,20 @@ window.onload = () => {
                     });
 
                     if (response.ok) {
-                        // Nascondi il modale di modifica
+                        //Hide edit modal
                         const editProductModal = bootstrap.Modal.getInstance(document.getElementById('editProductModal'));
                         editProductModal.hide();
 
-                        // Mostra l'alert di conferma
+                        //Show confirmation alert
                         const alertSuccess = document.getElementById('alert-success');
                         alertSuccess.classList.remove('d-none');
                         alertSuccess.classList.add('show');
 
-                        // Nascondi l'alert dopo un certo tempo (opzionale)
                         setTimeout(() => {
                             alertSuccess.classList.remove('show');
                             alertSuccess.classList.add('d-none');
                         }, 2000);
 
-                        // Aggiorna la lista dei prodotti
                         getProducts().then(products => {
                             displayExistingProducts(products);
                         });
