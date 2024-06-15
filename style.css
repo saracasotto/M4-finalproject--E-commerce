@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+/*INDEX.HTML*/
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+h1,
+h5 {
+    font-family: "Noto Serif", serif;
+}
+
+.navbar-brand {
+    font-size: 3em;
+    font-family: "Cookie", cursive;
+    color: #606C38;
+}
+
+.navbar-brand:hover {
+    color: #283618;
+}
+
+.navbar-brand img {
+    height: 1.5em;
+}
+
+
+.nav-link {
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+h1,
+h2,
+.nav-link{
+    color: #BC6C25;
+}
+
+.jumbotron {
+    height: 50vh;
+    background-image: url(assets/Japanese_room_divider_screens.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+@media (max-width:1199px) {
+
+
+    .jumbotron {
+        display: none;
+    }
+
+    .navbar-brand {
+        font-size: 2em;
+    }
+    
+    .navbar-brand img {
+        height: 1em;
+    }
+}
+
+.card {
+    width: 90%;
+    border: none;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.card .card-img-top-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.card .card-img-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 0.7em;
+}
+
+.card-body a{
+    text-decoration: none;
+    font-size: 0.8em;
+    color: #283618;
+}
+
+.card-body a:hover{
+    text-decoration:underline;
+}
+
+.card-title,
+.card-text:first-of-type,
+.card-text:last-of-type {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.5em;
+    white-space: normal;
+}
+
+.card-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    height: 2.4em;
+    color: #283618;
+}
+
+.card-text:first-of-type {
+    font-size: 0.75em;
+    height: 4.5em;
+}
+
+.card-text:last-of-type {
+    height: 1.2em;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #283618;
+    font-family: "Noto Serif", serif;
+    text-align: end;
+}
+
+footer {
+    font-size: 0.8em;
+    border-top: solid 0.2px rgba(96, 108, 56, 0.745);
+}
+
+footer a{
+    color: #606C38;
+    padding: 0 1em 0 0 ;
+    text-decoration: none;
+}
+
+/*BACKOFFICE.HTML*/
+#alert-success {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.backoffice-title {
+    color: white;
+    width: 100%;
+    background-color: #283618;
+    font-family:"Roboto", sans-serif;
+    text-align: center;
+}
+
+.product-manager-description{
+    text-align: center;
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+#product-form {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.form-control{
+   border: 1px solid #283618;
+}
+
+
+.table-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.backoffice-card {
+    width: 80%;
+    margin: 0.5em auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.backoffice-card .card-img-top-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.backoffice-card .edit-product-btn,
+.backoffice-card .btn.delete {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    font-size: 1.2em;
+}
+
+.backoffice-card .btn.edit-product-btn{
+    left: 0;
+    color: blue;
+}
+
+.backoffice-card .btn.delete {
+    right: 0;
+    color: red;
+}
+
+.backoffice-card .card-title,
+.backoffice-card .card-body,
+.backoffice-card .card-footer .btn  {
+    font-size: 0.9em;
+}
+
+.backoffice-card .card-title{
+    height: 1.2em;
+}
+
+.backoffice-card p,
+.backoffice-card .card-body  {
+    margin: 0;
+}
+
+.backoffice-card .card-body {
+    padding: 0.5em;
+}
+
+#editProductModal .modal-header{
+    background-color: #606C38;
+    color: white;
+    padding: 0.7em;
+}
+
+#editProductModal .modal-body,
+#editProductForm .form-control,
+#editProductModal .btn { 
+    font-size: 0.9em;
+}
+
+/*PRODUCT.HTML*/
+
+#product-page {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+#product-image-container {
+    position: relative;
+    width: 350px;
+    padding-top: 100%;
+    height: 350px;
+}
+
+#product-image-container #product-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+@media (max-width:767px) {
+
+    #product-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    #product-image-container {
+        position: relative;
+        width: 250px;
+        padding-top: 100%;
+        height: 250px;
+    }
+
+}
+
+#product-page #product-name,
+#product-page #product-price {
+   color: #283618;
+   font-size: 1.8em;
+}
+
+
+#product-page p{
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+
+#loading-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.959);
+    z-index: 1000;
+}
+
+#loading-spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #606C38;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.offcanvas .btn-primary {
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: 1em;
+    background-color: transparent;
+    color: #0d6efd;
+}
